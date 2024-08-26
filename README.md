@@ -15,3 +15,10 @@ application and connect it to your React components.
 React Query is a library that helps you manage data fetching and caching in your React application.
 
 npx create-react-app
+
+### React HOOKS
+React Hooks are a new way to use state and other React features in functional components. They allow you
+to use state and other React features without writing a class.
+### React Context API
+The React Context API is a way to share data between components without passing props down manually.
+It allows you to create a global state that can be accessed by any component in your application.
