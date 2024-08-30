@@ -1,8 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### State
+here we learned about how the state is used, when we click on button, the onclick prop expect a function reference, not the function call, if we call the function like setColor(), then it will give us the return 
+we can use a anonymous func and then call the setColor function to change the state of the variable color
