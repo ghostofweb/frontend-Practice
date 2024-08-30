@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-    // sending them the properties to the Card
+    // sending them the properties to the
     <h1 className='bg-green-400 text-black p-4 rounded-xl mb-4'>Tailwind test</h1>
     <Card username="sahiljeet" btntxt="clickme"/>
     <Card username="singh" />
