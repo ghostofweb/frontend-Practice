@@ -1,23 +1,23 @@
-import React,{useId} from "react";
+import React, { useId } from "react";
+
 function Input({
     label,
-    amount,
-    onAmountChange,
-    onCurrencyChange,
+    amount, 
+    onAmountChange, 
     currencyOptions = [],
+    onCurrencyChange,
     selectCurrency = 'usd',
     amountDisable = false,
-    currencyDisbale = false,
-    className = "",}
-) {
-   const amountInputId = useId()
+    currencyDisable = false,
+    className = "",
+}) {
+    const amountInputId = useId();
 
     return (
-        // here we are writing css in the {} , so we can inject more css from the user
-        <div className={`bg-white p-3 rounded-lg text-sm flex ${className} `}> 
+        <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>
             <div className="w-1/2">
                 <label htmlFor={amountInputId} className="text-black/40 mb-2 inline-block">
-                        {label}
+                    {label}
                 </label>
                 <input
                     id={amountInputId}
@@ -26,8 +26,7 @@ function Input({
                     placeholder="Amount"
                     disabled={amountDisable}
                     value={amount}
-                    onChange={(e) => onAmountChange(Number(e.target.value) && onAmountChange)}
-                    // using number because we mostly get that in string sometimes 
+                    onChange={(e) => onAmountChange(parseFloat(e.target.value) || 0)}
                 />
             </div>
             <div className="w-1/2 flex flex-wrap justify-end text-right">
@@ -35,18 +34,14 @@ function Input({
                 <select
                     className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
                     value={selectCurrency}
-                    onChange={(e) => onCurrencyChange(Number(e.target.value) && onCurrencyChange)}
-                    disabled = {currencyDisbale}
+                    onChange={(e) => onCurrencyChange(e.target.value)}
+                    disabled={currencyDisable}
                 >
-                    {/* remember the keys in loops of rjx */}
-
-                       {currencyOptions.map((currency) =>(
-                            <option key={currency}
-                            value={currency}>
-                                {currency}
-                            </option>
-                       ))}
-                
+                    {currencyOptions.map((currency) => (
+                        <option key={currency} value={currency}>
+                            {currency.toUpperCase()}
+                        </option>
+                    ))}
                 </select>
             </div>
         </div>

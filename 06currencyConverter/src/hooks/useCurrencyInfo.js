@@ -2,13 +2,14 @@ import { useEffect, useState} from "react";
 
 // ALL hooks are mostly start with "use" word
 function useCurrencyInfo(currency){
-    const [data,setData] = useState({})
+    const [ data , setData ] = useState({})
     useEffect( () => {
         // fetch data from API
         fetch(`https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@2024-03-06/v1/currencies/${currency}.json`)
         .then((res) => res.json())
-        .then((res) => setData(res[currency]) )
+        .then((res) => setData(res[currency]) ) // getting the res[inr] or res.inr
     },[currency])
+    console.log(data)  
     return data;
 }
 
