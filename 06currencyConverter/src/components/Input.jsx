@@ -6,7 +6,7 @@ function Input({
     onAmountChange, 
     currencyOptions = [],
     onCurrencyChange,
-    selectCurrency = 'usd',
+    selectCurrency = 'usd', 
     amountDisable = false,
     currencyDisable = false,
     className = "",
@@ -38,6 +38,7 @@ function Input({
                     disabled={currencyDisable}
                 >
                     {currencyOptions.map((currency) => (
+                        // always pass key in loop for options to not make it infinite
                         <option key={currency} value={currency}>
                             {currency.toUpperCase()}
                         </option>
