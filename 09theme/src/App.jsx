@@ -17,10 +17,12 @@ const darkTheme = () =>{
 
 //actual change in the theme
 
-useEffect(()=>{
- document.querySelector("html").classList.remove("light,dark");
- document.querySelector("html").classList.add(themeMode)
-},[themeMode])
+useEffect(() => {
+  const htmlElement = document.querySelector('html');
+  htmlElement.classList.remove('light', 'dark'); // Remove both classes first
+  htmlElement.classList.add(themeMode); // Add the current theme mode
+}, [themeMode]);
+
 
 
 
