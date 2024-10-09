@@ -1,27 +1,25 @@
-import React,{useState,useEffect} from 'react'
-import { useSelector } from 'react-redux'
-import { Link,useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-export default function Protected({children,authantication = true}) {   
-    const navigate = useNavigate()
-    const [loader,setLoader] = useState(true)
-    const authStatus = useSelector(state => state.auth.status)
-    useEffect(()=>{
+export default function Protected({ children, authentication = true }) {
+    const navigate = useNavigate();
+    const [loader, setLoader] = useState(true);
+    const authStatus = useSelector((state) => state.auth.status);
 
-        // if(authStatus ===true){    so this is alternate of what is below,but easy
-        //     navigate("/")
-        // }else if(authStatus === false){
-        //     navigate("/login")
-        // }
-
-        if (authantication && authStatus !== authantication) {
-            navigate("/login")
-        }else if(!authantication && authStatus !== authantication){
-            navigate("/")
+    useEffect(() => {
+        // Check if authentication is required
+        if (authentication && !authStatus) {
+            // User should be authenticated; redirect to login
+            navigate('/login');
+        } else if (!authentication && authStatus) {
+            // User should not be authenticated; redirect to home
+            navigate('/');
+        } else {
+            // If we reach here, authentication state is as expected
+            setLoader(false); // Stop loading
         }
-        setLoader(false)
-    },[authStatus,navigate,authantication])
+    }, [authStatus, navigate, authentication]);
 
-  return loader ? <h1>Loading ...</h1> : <>{children}</>
+    return loader ? <h1>Loading...</h1> : <>{children}</>;
 }
-   

@@ -15,24 +15,27 @@ export class Service{
         this.bucket = new Storage(this.client)
     }
 
-    async createPost(slug,{title,content,featuredImage,status}){
+    async createPost(slug, postData) {
         try {
+            const { title, content, featuredImage, status, userId } = postData || {}; // Use an empty object to avoid destructuring undefined
+    
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug, //any id can be there, can also use ID
+                slug,
                 {
                     title,
                     content,
                     featuredImage,
                     status,
                     userId
-                } //here content comes
-            )
+                }
+            );
         } catch (error) {
-            console.log("error came", error)
+            console.log("error came", error);
         }
     }
+    
 
     async updatePost(slug,{title,content,featuredImage,status}){
         try {
